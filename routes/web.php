@@ -17,14 +17,18 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-	$router->post('/register', function (){
-		return 'Hello, This is a POST method: Register';
-    });
+	$router->post('/register', ['uses' => 'UserController@register']);
     
-    $router->post('/login', 'AuthenticationController@postLogin');
+    $router->post('/login', ['uses' => 'UserController@login']);
     
     $router->get('/users/{id}', function ($id){
 		return 'Hello, This is a GET method: Get User: '.$id;
-	});
+    });
+
+    $router->get('/users/{id}', [
+        'uses' => 'UserController@show'
+    ]);
+    
+    $router->get('/test', ['uses' => 'UserController@users']);
 
 });
