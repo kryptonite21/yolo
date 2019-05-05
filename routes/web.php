@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return '<h1>Hello, Welcome to Yolo APIs</h1>';
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
