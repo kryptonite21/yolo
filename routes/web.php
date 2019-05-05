@@ -15,6 +15,8 @@ $router->get('/', function () use ($router) {
     return '<h1>Hello, Welcome to Yolo APIs</h1>';
 });
 
+$router->post('/auth/login', 'ExampleController@postLogin');
+
 $router->group(['prefix' => 'api'], function () use ($router) {
 
 	$router->post('/register', function (){
