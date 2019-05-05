@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Tymon\JWTAuth\JWTAuth;
 
+/**
+ * User Controller class
+ */
 class UserController extends Controller
 {
     /**
@@ -27,6 +30,12 @@ class UserController extends Controller
         ]]);
     }
 
+    /**
+     * Login API
+     *
+     * @param Request $request
+     * @return void
+     */
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -58,6 +67,12 @@ class UserController extends Controller
         return response()->json(compact('token', 'data'));
     }
 
+    /**
+     * Register API
+     *
+     * @param Request $request
+     * @return void
+     */
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -79,9 +94,15 @@ class UserController extends Controller
         return response()->json(['message' => 'You have successfuly registered to the system.'],201);    
     }
     
+    /**
+     * Show User API
+     *
+     * @param integer $id
+     * @return void
+     */
     public function show($id)
     {
-            return User::findOrFail($id);
+        return User::findOrFail($id);
     }
 
 }
