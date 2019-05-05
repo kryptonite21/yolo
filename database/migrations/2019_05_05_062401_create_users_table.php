@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name', 125);
             $table->string('last_name', 125);
-            $table->string('email', 65);
+            $table->string('email', 255);
             $table->string('password', 85);
             $table->string('age', 35);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

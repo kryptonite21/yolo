@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
-class ExampleController extends Controller
+class AuthenticationController extends Controller
 {
     /**
      * @var \Tymon\JWTAuth\JWTAuth
@@ -28,7 +28,7 @@ class ExampleController extends Controller
         try {
 
             if (! $token = $this->jwt->attempt($request->only('email', 'password'))) {
-                return response()->json(['user_not_found'], 404);
+                return response()->json(['message' => 'Sorry, user not found.'], 404);
             }
 
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
